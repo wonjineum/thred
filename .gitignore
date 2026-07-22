@@ -1,0 +1,27 @@
+# Node
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# ML weights (large binary files — keep out of git unless you set up Git LFS)
+ml/weights/*.pt
+ml/weights/*.pth
+ml/weights/*.onnx
+
+# Editor/OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Extension build output
+extension/dist/
+extension/.output/
