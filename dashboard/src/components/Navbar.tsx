@@ -8,6 +8,7 @@ export default function Navbar({ onLogout }: Props) {
       <strong>MyDashboard</strong>
       <NavLink to="/">Dashboard</NavLink>
       <NavLink to="/analytics">Analytics</NavLink>
+      <NavLink to="/settings">Settings</NavLink>
       <button onClick={onLogout} style={{ marginLeft: "auto" }}>Log out</button>
     </nav>
   );
