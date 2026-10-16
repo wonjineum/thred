@@ -8,6 +8,7 @@ A browser extension that scores clothing sustainability at the point of purchase
 thred/
 ├── extension/   Chrome extension (Manifest V3, TypeScript, React, Tailwind)
 ├── backend/     FastAPI service (brand/material scoring, CNN + CLIP inference)
+├──dashboard/    Website (React, Typescript, HTML, CSS, Javascript)
 ├── ml/          Model training scripts, notebooks, saved weights
 └── docs/        Research, problem statement, roadmap
 ```
