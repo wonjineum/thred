@@ -25,3 +25,4 @@ Thumbs.db
 # Extension build output
 extension/dist/
 extension/.output/
+.pytest_cache/
