@@ -41,7 +41,9 @@ The extension sends every clothing item in the cart. Only `item_id` and `title` 
       "price": 49.99,
       "image_url": "https://m.media-amazon.com/images/...",
       "product_url": "https://www.amazon.com/dp/B0HOODIE01",
-      "material_text": "60% Cotton, 40% Polyester"
+      "material_text": "60% Cotton, 40% Polyester",
+      "category": "Hoodies",
+      "certifications": ["OEKO-TEX Standard 100"]
     }
   ]
 }
@@ -56,8 +58,10 @@ The extension sends every clothing item in the cart. Only `item_id` and `title` 
 | `image_url` | no | |
 | `product_url` | no | |
 | `material_text` | no | Raw text, e.g. from "Fabric type" on the product page. The cart page usually doesn't show materials. |
+| `category` | no | Most specific breadcrumb level, e.g. `"Hoodies"` |
+| `certifications` | no | From the product's Climate Pledge Friendly badge. List of strings, `[]` if none |
 
-Limit: 1–50 items per request.
+Limit: 1–50 items per request. Where to find each field on Amazon: see [`docs/data-formats.md`](../docs/data-formats.md).
 
 ### Response
 

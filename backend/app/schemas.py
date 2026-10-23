@@ -23,6 +23,11 @@ class CartItem(BaseModel):
         default=None,
         description="Raw material text from the product page, e.g. '60% Cotton, 40% Polyester'",
     )
+    category: str | None = Field(default=None, description="Most specific breadcrumb level, e.g. 'Hoodies'")
+    certifications: list[str] = Field(
+        default_factory=list,
+        description="Certifications from the product's Climate Pledge Friendly badge, e.g. ['GOTS']",
+    )
 
 
 class ScoreRequest(BaseModel):

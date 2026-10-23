@@ -52,3 +52,8 @@ def test_cors_allows_extension_origin():
         },
     )
     assert res.headers.get("access-control-allow-origin") == "chrome-extension://abcdefghijklmnop"
+
+
+def test_accepts_category_and_certifications():
+    item = {**HOODIE, "category": "Hoodies", "certifications": ["GOTS"]}
+    assert client.post("/score", json={"items": [item]}).status_code == 200
