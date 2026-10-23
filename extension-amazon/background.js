@@ -7,3 +7,9 @@ chrome.action.onClicked.addListener(async (tab) => {
     await chrome.scripting?.executeScript?.({ target: { tabId: tab.id }, files: ["content.js"] });
   }
 });
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message?.type === "THRED_OPEN_DASHBOARD") {
+    chrome.tabs.create({ url: "http://localhost:5173" });
+  }
+});
