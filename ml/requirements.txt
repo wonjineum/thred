@@ -1,5 +1,5 @@
+openai
+python-dotenv
 torch
-torchvision
-open_clip_torch
+transformers
 pillow
-jupyter
