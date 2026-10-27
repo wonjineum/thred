@@ -1,5 +1,5 @@
 """
-Amazon product scraper for the sustainability extension.
+Amazon product scraper for Thred.
 
 Outputs the Part A format: raw text, null when unknown, [] for no certifications.
 
@@ -170,6 +170,7 @@ def extract_price(soup, html=""):
             val = to_float(node.get_text())
             if val:
                 return val
+    
     # whole and fraction spans, like 120 and 00
     whole = soup.select_one("span.a-price-whole")
     if whole:
@@ -178,6 +179,7 @@ def extract_price(soup, html=""):
         f = re.sub(r"\D", "", frac.get_text()) if frac else ""
         if w:
             return float(f"{w}.{f or '00'}")
+        
     # hidden inputs and embedded JSON
     node = soup.select_one("#twister-plus-price-data-price")
     if node and node.get("value"):
