@@ -2,7 +2,12 @@ fastapi
 uvicorn[standard]
 sqlmodel
 psycopg2-binary
-torch
-open_clip_torch
-pillow
 anthropic
+
+# tests
+pytest
+httpx
+
+# torch / open_clip_torch removed for V0: we're using the Claude API instead of
+# our own model, and they're several GB, which slows installs and Railway deploys.
+# Add them back when we train our own model.
