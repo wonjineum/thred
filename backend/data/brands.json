@@ -1,0 +1,638 @@
+[
+  {
+    "name": "Amazon Essentials",
+    "aliases": [
+      "amazon essentials"
+    ],
+    "evidence": {
+      "fti_score": 26,
+      "b_corp": false,
+      "sbti_target": false,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 64.3 / 250 (Amazon.com)",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "In August, the initiative removed Amazon from the list of validated companies"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/de/companies/amazoncom/?issue=614",
+      "https://www.datacenterdynamics.com/en/news/amazon-is-dropped-by-science-based-targets-initiative/",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Hanes",
+    "aliases": [
+      "hanes",
+      "hanesbrands"
+    ],
+    "evidence": {
+      "fti_score": 38,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 93.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "receiving approval on its near-term science-based targets from the Science Based Targets initiative"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/hanesbrands/?issue=543",
+      "https://hanesbrandsinc.gcs-web.com/news-releases/news-release-details/hanesbrands-announces-substantial-progress-toward-reaching",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Gildan",
+    "aliases": [
+      "gildan",
+      "gildan activewear"
+    ],
+    "evidence": {
+      "fti_score": 54,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 133.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Both targets have now been reviewed and validated by the SBTi."
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/gildan-activewear/",
+      "https://gildancorp.com/en/media/news/science-based-emissions-targets-validated-by-SBTi/",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Fruit of the Loom",
+    "aliases": [
+      "fruit of the loom",
+      "fruit of the loom inc",
+      "fotl"
+    ],
+    "evidence": {
+      "fti_score": 34,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 83.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "In 2021, the Science Based Target initiative (“SBTi”) approved our targets"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/my/companies/fruit-of-the-loom-part-of-berkshire-hathaway/?tracker=8",
+      "https://www.fotlinc.com/california-ab-1305-disclosure/",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Levi's",
+    "aliases": [
+      "levi's",
+      "levis",
+      "levi strauss",
+      "levi strauss & co"
+    ],
+    "evidence": {
+      "fti_score": 60,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 151 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "These ambitious targets are approved by the Science Based Targets Initiative"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/levi-strauss/?issue=543",
+      "https://levistrauss.com/LSCO_Climate_Action_Strategy_2025",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Carhartt",
+    "aliases": [
+      "carhartt"
+    ],
+    "evidence": {
+      "fti_score": 7,
+      "b_corp": true,
+      "sbti_target": null,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "gave Carhartt an overall rating of 7%",
+      "b_corp": "Carhartt, Inc. - Certified B Corporation - B Lab"
+    },
+    "sources": [
+      "https://impactful.ninja/?p=41586",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/company/carhartt-inc-developed-market/",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Under Armour",
+    "aliases": [
+      "under armour",
+      "underarmour",
+      "ua"
+    ],
+    "evidence": {
+      "fti_score": 28,
+      "b_corp": false,
+      "sbti_target": false,
+      "certifications": [
+        "bluesign"
+      ]
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 69.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "we will not pursue SBTi re-validation of our 2030 goal",
+      "bluesign": "Under Armour, Inc"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/under-armour/",
+      "https://about.underarmour.com/en/stories/press-releases/release.24831.html",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Columbia",
+    "aliases": [
+      "columbia",
+      "columbia sportswear"
+    ],
+    "evidence": {
+      "fti_score": 37,
+      "b_corp": false,
+      "sbti_target": false,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 91.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Columbia lags its peers in the footwear and apparel industry."
+    },
+    "sources": [
+      "https://www.business-humanrights.org/zh-hans/%E4%BC%81%E4%B8%9A/columbia-sportswear/",
+      "https://www.sec.gov/files/corpfin/no-action/14a-8/gcefcolumbia41525-14a8.pdf",
+      "https://www.quantisnow.com/insight/sec-form-px14a6g-filed-by-columbia-sportswear-company-5998017",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Calvin Klein",
+    "aliases": [
+      "calvin klein",
+      "calvin klein jeans",
+      "ck"
+    ],
+    "evidence": {
+      "fti_score": 48,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 120.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "received approval of its ... emission reduction targets by the Science Based Target initiative"
+    },
+    "sources": [
+      "https://business-humanrights.org/zh-hans/企业/calvin-klein-part-of-pvh",
+      "https://www.pvh.com/news/press-releases/PVHs-Greenhouse-Gas-Reduction-Targets-Receive-Science-Based-Approval",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "adidas",
+    "aliases": [
+      "adidas",
+      "adidas originals"
+    ],
+    "evidence": {
+      "fti_score": 56,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": [
+        "bluesign"
+      ]
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 140 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Adidas, VF Corporation, Puma, and New Balance have all set SBTi-validated ... targets",
+      "bluesign": "adidas AG"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/en/companies/adidas/",
+      "https://www.quantisnow.com/insight/sec-form-px14a6g-filed-by-columbia-sportswear-company-5998017",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Nike",
+    "aliases": [
+      "nike",
+      "nike inc"
+    ],
+    "evidence": {
+      "fti_score": 50,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 124.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "NIKE set a science-based target (SBT) in FY19 to reduce our carbon footprint by 2030"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/nike/?companies=6257560",
+      "https://about.nike.com/en-GB/mission/initiatives/reducing-our-carbon-footprint-2",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Puma",
+    "aliases": [
+      "puma"
+    ],
+    "evidence": {
+      "fti_score": 66,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 166 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Adidas, VF Corporation, Puma, and New Balance have all set SBTi-validated ... targets"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/en/companies/puma/",
+      "https://www.quantisnow.com/insight/sec-form-px14a6g-filed-by-columbia-sportswear-company-5998017",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "New Balance",
+    "aliases": [
+      "new balance",
+      "nb"
+    ],
+    "evidence": {
+      "fti_score": 46,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 113.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Adidas, VF Corporation, Puma, and New Balance have all set SBTi-validated ... targets"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/new-balance",
+      "https://www.quantisnow.com/insight/sec-form-px14a6g-filed-by-columbia-sportswear-company-5998017",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Tommy Hilfiger",
+    "aliases": [
+      "tommy hilfiger",
+      "tommy jeans",
+      "tommy"
+    ],
+    "evidence": {
+      "fti_score": 50,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 123.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "received approval of its ... emission reduction targets by the Science Based Target initiative"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/tommy-hilfiger-part-of-pvh/",
+      "https://www.pvh.com/news/press-releases/PVHs-Greenhouse-Gas-Reduction-Targets-Receive-Science-Based-Approval",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Wrangler",
+    "aliases": [
+      "wrangler"
+    ],
+    "evidence": {
+      "fti_score": 33,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 82.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Competitors Brooks, Kontoor Brands, and Patagonia ... have set SBTi-validated"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/pt/empresas/wrangler-part-of-vf-corp/",
+      "https://www.quantisnow.com/insight/sec-form-px14a6g-filed-by-columbia-sportswear-company-6030292",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Gap",
+    "aliases": [
+      "gap",
+      "gap inc",
+      "gap factory"
+    ],
+    "evidence": {
+      "fti_score": 48,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 120.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29 (Gap Inc.'s separate Athleta brand is a B Corp)",
+      "sbti_target": "Science Based Targets initiative (SBTi), which has approved our science-based targets"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/en/companies/gap/?companies=6279988",
+      "https://gapinc.com/en-us/impact/bridging-the-climate-gap/climate",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Pact",
+    "aliases": [
+      "pact",
+      "wear pact",
+      "pact organic"
+    ],
+    "evidence": {
+      "fti_score": null,
+      "b_corp": false,
+      "sbti_target": null,
+      "certifications": [
+        "Fair Trade Certified",
+        "GOTS"
+      ]
+    },
+    "evidence_snippets": {
+      "b_corp": "appears to have lost this status following reassessment",
+      "Fair Trade Certified": "Most of Pact’s products are made in Fair Trade Certified™ and GOTS-certified factories in India",
+      "GOTS": "Pact primarily uses GOTS-certified organic cotton across its product range."
+    },
+    "sources": [
+      "https://www.ecolife.com/brand-reports/how-sustainable-is-pact",
+      "https://www.sustainablejungle.com/?p=3090980",
+      "https://www.sustainablejungle.com/brand-ratings/pact",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "The Drop",
+    "aliases": [
+      "the drop"
+    ],
+    "evidence": {
+      "fti_score": 26,
+      "b_corp": false,
+      "sbti_target": false,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 64.3 / 250 (Amazon.com)",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "In August, the initiative removed Amazon from the list of validated companies"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/de/companies/amazoncom/?issue=614",
+      "https://www.datacenterdynamics.com/en/news/amazon-is-dropped-by-science-based-targets-initiative/",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "The North Face",
+    "aliases": [
+      "the north face",
+      "north face",
+      "tnf"
+    ],
+    "evidence": {
+      "fti_score": 66,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": [
+        "bluesign"
+      ]
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 163.8 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Approved by the Science Based Targets initiative",
+      "bluesign": "VF Outdoor, LLC"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/north-face-part-of-vf-corp/",
+      "https://vfc.com/news/press-release/1699/vf-corporation-announces-new-science-based-targets-to",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "ASICS",
+    "aliases": [
+      "asics"
+    ],
+    "evidence": {
+      "fti_score": 45,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": [
+        "bluesign"
+      ]
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 113.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "SCIENCE BASED TARGETS INITIATIVE RECOGNIZES ASICS’ CO2 EMISSIONS REDUCTION TARGET",
+      "bluesign": "ASICS Corporation"
+    },
+    "sources": [
+      "https://business-humanrights.org/it/companies/asics",
+      "https://corp.asics.com/en/press/article/2018-08-21-1",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Guess",
+    "aliases": [
+      "guess",
+      "guess jeans",
+      "guess inc"
+    ],
+    "evidence": {
+      "fti_score": 31,
+      "b_corp": false,
+      "sbti_target": true,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 77.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "its ambitious targets ... approved by the Science-Based Targets Initiative"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/en/companies/guess/",
+      "https://www.businesswire.com/news/home/20211103005186/en",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Reebok",
+    "aliases": [
+      "reebok"
+    ],
+    "evidence": {
+      "fti_score": 1,
+      "b_corp": false,
+      "sbti_target": false,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29",
+      "sbti_target": "Climate commitments: None on record (parent Authentic Brands Group)"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/en/companies/reebok-part-of-authentic-brands/",
+      "https://ditchcarbon.com/organizations/authentic-brands",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Skechers",
+    "aliases": [
+      "skechers"
+    ],
+    "evidence": {
+      "fti_score": 7,
+      "b_corp": false,
+      "sbti_target": null,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2023: 16.3 / 250",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/it/companies/skechers/",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Allbirds",
+    "aliases": [
+      "allbirds"
+    ],
+    "evidence": {
+      "fti_score": null,
+      "b_corp": true,
+      "sbti_target": null,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "b_corp": "Certified B Corporation; Certified Since December 2016"
+    },
+    "sources": [
+      "https://bcorporation.net/directory/allbirds-inc",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  },
+  {
+    "name": "Forever 21",
+    "aliases": [
+      "forever 21",
+      "forever21",
+      "f21"
+    ],
+    "evidence": {
+      "fti_score": 7,
+      "b_corp": false,
+      "sbti_target": null,
+      "certifications": []
+    },
+    "evidence_snippets": {
+      "fti_score": "Fashion Transparency Index 2020: 16.5 / 250 (latest edition it appears in)",
+      "b_corp": "Not listed in a B Lab directory search on 2026-10-29"
+    },
+    "sources": [
+      "https://www.business-humanrights.org/en/companies/forever-21",
+      "https://www.bcorporation.net/en-us/find-a-b-corp/",
+      "https://www.bluesign.com/wp-content/uploads/2026/08/bluesign-System-Partner-list_2026.08.01.pdf"
+    ],
+    "last_checked": "2026-10-29"
+  }
+]
