@@ -1,7 +1,14 @@
-from llm import client, LLM_MODEL
+""" python -m ml.test_llm """ 
 
-r = client.chat.completions.create(
-    model=LLM_MODEL,
-    messages=[{"role": "user", "content": "Say hello in 3 words."}],
-)
-print(r.choices[0].message.content)
+from .llm_helpers import classify_unknown_brand
+
+domains = [
+    "patagonia.com",
+    "shein.com",
+    "nike.com",
+    "unknownbrand12345.com",
+]
+
+for domain in domains:
+    rating = classify_unknown_brand(domain)
+    print(f"{domain} -> {rating}")
