@@ -13,6 +13,8 @@ from .schemas import (
     ItemScore,
     Verdict,
 )
+from .catalog import Brand, Catalog, Material
+from .material_parser import parse_materials
 
 BRAND_MAX = 34
 MATERIAL_MAX = 33
@@ -50,7 +52,26 @@ _MOCK_PROFILES = [
 ]
 
 
-def mock_item_score(item: CartItem, position: int) -> ItemScore:
+def score_item(item: CartItem, position: int, catalog: Catalog) -> ItemScore:
+    """Run catalog matching before delegating to the existing scorer.
+
+    Component point rules are not implemented in this repository yet, so the
+    existing placeholder scorer remains the only supported calculation. The
+    matched values are intentionally not converted into invented points.
+    """
+    brand = catalog.match_brand(item.brand)
+    parsed_materials = parse_materials(item.material_text) or {}
+    materials = catalog.match_materials(list(parsed_materials))
+    return mock_item_score(item, position, brand=brand, materials=materials)
+
+
+def mock_item_score(
+    item: CartItem,
+    position: int,
+    *,
+    brand: Brand | None = None,
+    materials: dict[str, Material | None] | None = None,
+) -> ItemScore:
     # Alternate profiles by cart position so any cart with 2+ items shows both styles.
     profile = _MOCK_PROFILES[position % len(_MOCK_PROFILES)]
     brand_pts, brand_summary = profile["brand"]

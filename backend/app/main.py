@@ -2,9 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .schemas import ScoreRequest, ScoreResponse
-from .scoring import mock_item_score, summarize_cart
+from .catalog import load_catalog
+from .scoring import score_item, summarize_cart
 
 app = FastAPI(title="Thred backend")
+CATALOG = load_catalog()
 
 # The extension should call the API from background.js (with the backend URL in
 # the manifest's host_permissions), which skips CORS. This also allows calls from
@@ -24,6 +26,6 @@ def health():
 
 @app.post("/score", response_model=ScoreResponse)
 def score(req: ScoreRequest) -> ScoreResponse:
-    """Score every item in a cart. Placeholder scores until step 3 (real scoring) lands."""
-    items = [mock_item_score(item, i) for i, item in enumerate(req.items)]
+    """Score every item in a cart using the cached catalog matching seam."""
+    items = [score_item(item, i, CATALOG) for i, item in enumerate(req.items)]
     return ScoreResponse(items=items, cart=summarize_cart(items), mock=True)
