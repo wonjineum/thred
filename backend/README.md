@@ -2,7 +2,11 @@
 
 FastAPI service that scores the items in an Amazon cart.
 
-**Status:** `/score` returns placeholder (mock) scores in the final response shape, so the extension can be wired up now. Real brand + material scoring comes next.
+**Status:** `/score` still returns the existing placeholder response shape because
+the repository does not yet implement the documented brand/material point rules.
+The backend now validates and caches the optional catalogs, parses material text,
+and matches brands/materials before reaching the scoring seam. No points are
+derived from catalog facts until those rules are defined.
 
 ## Run it locally
 
