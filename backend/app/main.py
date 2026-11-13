@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from pydantic import BaseModel
+from tests.scrape_amazon import fetch, parse_product
+
+
 from .schemas import ScoreRequest, ScoreResponse
 from .scoring import mock_item_score, summarize_cart
 
@@ -27,3 +31,36 @@ def score(req: ScoreRequest) -> ScoreResponse:
     """Score every item in a cart. Placeholder scores until step 3 (real scoring) lands."""
     items = [mock_item_score(item, i) for i, item in enumerate(req.items)]
     return ScoreResponse(items=items, cart=summarize_cart(items), mock=True)
+
+
+
+class AmazonCartRequest(BaseModel):
+    asins: list[str]
+
+
+
+@app.post("/scrape/amazon")
+def scrape_amazon_cart(request: AmazonCartRequest):
+    products = []
+
+    for asin in request.asins:
+        html = fetch(asin)
+
+        if not html:
+            continue
+
+        product = parse_product(html, asin)
+        products.append(product)
+
+    return {"products": products}
+
+
+class AmazonHTMLRequest(BaseModel):
+    asin: str
+    html: str
+
+
+@app.post("/scrape/amazon-html")
+def scrape_amazon_html(request: AmazonHTMLRequest):
+    product = parse_product(request.html, request.asin)
+    return {"product": product}
