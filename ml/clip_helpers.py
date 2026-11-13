@@ -54,10 +54,10 @@ def tag_image(image, options: list[str], template: str = "a photo of {}") -> dic
     """1 photo + a list of text options -> which option fits best.
  
     Returns {"best": "hoodie", "scores": {"hoodie": 0.91, "dress": 0.05, ...}} (scores sum to 1).
-    Scores are relative to your list: include an "other" option if none might fit.
+    Scores are relative to the list: include an "other" option if none might fit.
  
     Why it works: this is "zero-shot" classification. CLIP already knows how to match images
-    to text, so we never train a classifier. We just describe each possible label in words,
+    to text, so we never have to train a classifier. We just describe each possible label in words,
     and CLIP tells us which description the photo is closest to.
     """
     # Wrap each label in a sentence ("a photo of hoodie"). CLIP learned from captions, which are
