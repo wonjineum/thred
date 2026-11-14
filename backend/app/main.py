@@ -5,7 +5,8 @@ from pydantic import BaseModel
 from tests.scrape_amazon import fetch, parse_product
 
 
-from .schemas import ScoreRequest, ScoreResponse
+from .alternatives import find_alternatives, load_index
+from .schemas import AlternativesRequest, AlternativesResponse, ScoreRequest, ScoreResponse
 from .catalog import load_catalog
 from .scoring import score_item, summarize_cart
 
@@ -30,9 +31,15 @@ def health():
 
 @app.post("/score", response_model=ScoreResponse)
 def score(req: ScoreRequest) -> ScoreResponse:
-    """Score every item in a cart using the cached catalog matching seam."""
+    """Score every item in a cart: brand + material from the catalog, LLM fallback."""
     items = [score_item(item, i, CATALOG) for i, item in enumerate(req.items)]
-    return ScoreResponse(items=items, cart=summarize_cart(items), mock=True)
+    return ScoreResponse(items=items, cart=summarize_cart(items), mock=False)
+
+
+@app.post("/alternatives", response_model=AlternativesResponse)
+def alternatives(req: AlternativesRequest) -> AlternativesResponse:
+    """Up to `limit` lower-impact alternatives for one cart item."""
+    return find_alternatives(req.item, CATALOG, load_index(CATALOG), limit=req.limit)
 
 
 

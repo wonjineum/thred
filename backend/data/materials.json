@@ -1,0 +1,254 @@
+[
+  {
+    "name": "cotton",
+    "aliases": [
+      "cotton",
+      "pima cotton",
+      "supima cotton",
+      "combed cotton",
+      "ringspun cotton",
+      "ring-spun cotton",
+      "cotton fabric"
+    ],
+    "category": "natural",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "organic cotton",
+    "aliases": [
+      "organic cotton",
+      "certified organic cotton",
+      "gots cotton"
+    ],
+    "category": "natural",
+    "recycled": false,
+    "organic": true,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "recycled cotton",
+    "aliases": [
+      "recycled cotton"
+    ],
+    "category": "natural",
+    "recycled": true,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "linen",
+    "aliases": [
+      "linen",
+      "flax"
+    ],
+    "category": "natural",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "hemp",
+    "aliases": [
+      "hemp"
+    ],
+    "category": "natural",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "wool",
+    "aliases": [
+      "wool",
+      "merino wool",
+      "merino",
+      "lambswool",
+      "virgin wool"
+    ],
+    "category": "natural",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "recycled wool",
+    "aliases": [
+      "recycled wool"
+    ],
+    "category": "natural",
+    "recycled": true,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "silk",
+    "aliases": [
+      "silk",
+      "mulberry silk"
+    ],
+    "category": "natural",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "polyester",
+    "aliases": [
+      "polyester",
+      "poly"
+    ],
+    "category": "synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "recycled polyester",
+    "aliases": [
+      "recycled polyester",
+      "recycled poly",
+      "rpet",
+      "repreve"
+    ],
+    "category": "synthetic",
+    "recycled": true,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "nylon",
+    "aliases": [
+      "nylon",
+      "polyamide"
+    ],
+    "category": "synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "recycled nylon",
+    "aliases": [
+      "recycled nylon",
+      "recycled polyamide",
+      "econyl"
+    ],
+    "category": "synthetic",
+    "recycled": true,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "spandex",
+    "aliases": [
+      "spandex",
+      "elastane",
+      "lycra",
+      "elasterell"
+    ],
+    "category": "synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "acrylic",
+    "aliases": [
+      "acrylic"
+    ],
+    "category": "synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "viscose",
+    "aliases": [
+      "viscose",
+      "rayon",
+      "viscose rayon",
+      "rayon viscose"
+    ],
+    "category": "semi-synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "lyocell",
+    "aliases": [
+      "lyocell",
+      "tencel",
+      "tencel lyocell"
+    ],
+    "category": "semi-synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  },
+  {
+    "name": "modal",
+    "aliases": [
+      "modal",
+      "micromodal",
+      "tencel modal"
+    ],
+    "category": "semi-synthetic",
+    "recycled": false,
+    "organic": false,
+    "water_l_per_kg": null,
+    "co2_kg_per_kg": null,
+    "sources": {},
+    "notes": "Water and CO2 not sourced yet."
+  }
+]
