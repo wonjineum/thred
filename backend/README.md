@@ -2,11 +2,17 @@
 
 FastAPI service that scores the items in an Amazon cart.
 
-**Status:** `/score` still returns the existing placeholder response shape because
-the repository does not yet implement the documented brand/material point rules.
-The backend now validates and caches the optional catalogs, parses material text,
-and matches brands/materials before reaching the scoring seam. No points are
-derived from catalog facts until those rules are defined.
+**Status:** `/score` returns real brand + material scores (`"mock": false`). How scores are calculated: [`docs/scoring-model.md`](../docs/scoring-model.md). The numbers are in `app/rubric.py`.
+
+### LLM fallback (optional)
+
+Unknown brands and fabric text the parser can't read go to the LLM helpers in `ml/llm_helpers.py`. To turn that on, put your key in `ml/.env`:
+
+```
+OPENROUTER_API_KEY=your-key-here
+```
+
+Without a key, the backend still runs; those items just get the "unknown" score. Set `THRED_USE_LLM=0` to switch it off. Tests never call the real LLM.
 
 ## Run it locally
 
@@ -89,7 +95,7 @@ Limit: 1–50 items per request. Where to find each field on Amazon: see [`docs/
     "verdict_label": "Good choice",
     "headline": "Nice! Every item in your cart is a solid choice"
   },
-  "mock": true
+  "mock": false
 }
 ```
 
@@ -97,7 +103,66 @@ Limit: 1–50 items per request. Where to find each field on Amazon: see [`docs/
 - `verdict` is one of `good_choice`, `okay`, `consider_alternatives`. Use it for colors; show `verdict_label` as text.
 - `impact` and each `summary` are the plain-language phrases for the panel. The `points` are for the expanded view.
 - **History is not included.** The wardrobe lives in the extension's local storage, so the extension scores that part itself. `total` covers brand + material only.
-- `mock: true` means the scores are placeholders.
+- `mock` is `false` now that scoring is real.
+
+### `POST /alternatives`
+
+Up to 3 lower-impact alternatives for one cart item: same garment type, a better score that is at least "Okay", at most 1.5x the price, ranked by visual similarity (CLIP), score, and price.
+
+```json
+{ "item": { "item_id": "B0H34KR2DX", "title": "Banana Republic Women's Stretch Pant", "price": 120.0, "image_url": "https://...", "brand": "BANANA REPUBLIC", "material_text": "92% Viscose rayon, 8% Elastane" }, "limit": 3 }
+```
+
+`item` is the same shape as one item in `/score`. `limit` is optional (1–10, default 3).
+
+```json
+{
+  "item_id": "B0H34KR2DX",
+  "item_total": 33,
+  "garment_type": "pants",
+  "status": "ok",
+  "message": "",
+  "alternatives": [
+    {
+      "alt_id": "vinted-4829173",
+      "title": "Patagonia Organic Cotton Wide Leg Pants",
+      "brand": "Patagonia",
+      "price": 32.0,
+      "currency": "USD",
+      "image_url": "https://...",
+      "listing_url": "https://...",
+      "source": "Vinted",
+      "condition": "Very good",
+      "secondhand": true,
+      "garment_type": "pants",
+      "total": 82,
+      "verdict": "good_choice",
+      "verdict_label": "Good choice",
+      "similarity": 0.84,
+      "ranking_score": 0.88
+    }
+  ]
+}
+```
+
+| `status` | Meaning | What the panel can do |
+|---|---|---|
+| `ok` | Found alternatives | Show them |
+| `no_catalog` | No listings loaded yet | Hide the section, or show `message` |
+| `unknown_type` | Couldn't tell what garment it is | Show `message` |
+| `no_match` | Nothing better in that type and price range | Show `message` |
+
+`similarity` is `null` when CLIP isn't installed on the server.
+
+### Visual similarity (optional)
+
+CLIP needs torch + transformers (several GB), so it's not in `requirements.txt`. To turn it on:
+
+```bash
+pip install -r ../ml/requirements.txt
+```
+
+The first `/alternatives` request then loads the model (and downloads it the first time). Without it, alternatives are ranked on score and price only. Set `THRED_USE_CLIP=0` to switch it off.
 
 ### Calling it from the extension
 

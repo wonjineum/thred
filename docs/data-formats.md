@@ -160,3 +160,68 @@ Two files, committed to `backend/data/`. **Collect facts, not scores.** The back
 ## Questions
 
 Ask Wonjin (backend). If a field doesn't fit what you're finding, say so before working around it. It's easier to change this doc than to fix the data later.
+
+---
+
+## Part C: Alternatives catalog (Samira) and embeddings (Labi)
+
+Used by `POST /alternatives`. Both files go in `backend/data/`. If they don't exist yet, the endpoint still works and returns `"status": "no_catalog"`.
+
+### `backend/data/alternatives.json` (Samira)
+
+```json
+[
+  {
+    "alt_id": "vinted-4829173",
+    "title": "Patagonia Organic Cotton Wide Leg Pants",
+    "brand": "Patagonia",
+    "price": 32.00,
+    "currency": "USD",
+    "image_url": "https://images.vinted.net/....jpg",
+    "listing_url": "https://www.vinted.com/items/4829173",
+    "source": "Vinted",
+    "condition": "Very good",
+    "secondhand": true,
+    "garment_type": "pants",
+    "material_text": "100% Organic Cotton",
+    "size": "M",
+    "last_checked": "2026-11-14"
+  }
+]
+```
+
+| Field | Required | Notes |
+|---|---|---|
+| `alt_id` | **yes** | Unique. `<source>-<listing id>` works well |
+| `title` | **yes** | As shown on the listing |
+| `price` | **yes** | A number, no `$` |
+| `image_url` | **yes** | Must load directly (used by CLIP and shown in the panel) |
+| `listing_url` | **yes** | Where the user clicks through to buy |
+| `source` | **yes** | `"Vinted"`, etc. Shown in the panel |
+| `garment_type` | **yes** | **Must be one of:** `t-shirt`, `shirt`, `sweater`, `hoodie`, `jacket`, `dress`, `skirt`, `jeans`, `pants`, `shorts`, `leggings`, `shoes`, `bag`. Alternatives are only suggested within the same type |
+| `brand` | no | Scored the same way as `/score` |
+| `material_text` | no | Raw text, same as Part A. Without it the listing gets the "unknown material" score |
+| `secondhand` | no | Defaults to `true`. Secondhand listings get a bonus (`SECONDHAND_BONUS` in `backend/app/rubric.py`) |
+| `currency`, `condition`, `size`, `last_checked` | no | Shown or used for upkeep |
+
+The backend refuses to start if a listing is missing a required field, has a `garment_type` outside the list, or repeats an `alt_id`, so mistakes show up right away.
+
+**Cover the garment types Amazon shoppers buy most:** t-shirts, hoodies, jeans, pants, jackets. A few listings per type is enough for the demo. Use only listings the site's terms allow you to collect, and check that each `image_url` and `listing_url` still opens.
+
+### `backend/data/alternative_embeddings.json` (Labi)
+
+CLIP image embeddings for each listing, computed ahead of time so `/alternatives` doesn't have to download and embed every listing photo on each request:
+
+```json
+{
+  "model": "openai/clip-vit-base-patch32",
+  "embeddings": {
+    "vinted-4829173": [0.0123, -0.0456, "... 512 numbers ..."]
+  }
+}
+```
+
+- One entry per `alt_id` in `alternatives.json`, using the same model as `ml/clip_model.py`.
+- Unit-length vectors (what `clip_helpers._embed_image` already returns): `.reshape(-1).tolist()`.
+- Optional. Listings without an embedding get embedded on the fly when CLIP is installed, or ranked without visual similarity when it isn't.
+- Re-run whenever `alternatives.json` changes.

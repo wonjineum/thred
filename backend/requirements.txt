@@ -4,6 +4,14 @@ sqlmodel
 psycopg2-binary
 anthropic
 
+# LLM fallback (ml/llm_helpers.py goes through OpenRouter)
+openai
+python-dotenv
+
+# Amazon scraper used by /scrape endpoints (tests/scrape_amazon.py)
+requests
+beautifulsoup4
+
 # tests
 pytest
 httpx

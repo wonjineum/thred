@@ -79,3 +79,38 @@ class ScoreResponse(BaseModel):
     items: list[ItemScore]
     cart: CartSummary
     mock: bool = Field(description="True while the backend returns placeholder scores")
+
+
+# ---------- Alternatives ----------
+
+class AlternativesRequest(BaseModel):
+    item: CartItem
+    limit: int = Field(default=3, ge=1, le=10)
+
+
+class Alternative(BaseModel):
+    alt_id: str
+    title: str
+    brand: str | None
+    price: float
+    currency: str
+    image_url: str
+    listing_url: str
+    source: str = Field(description="Where the listing is, e.g. 'Vinted'")
+    condition: str | None
+    secondhand: bool
+    garment_type: str
+    total: int = Field(ge=0, le=100, description="Sustainability score, same scale as /score")
+    verdict: Verdict
+    verdict_label: str
+    similarity: float | None = Field(description="CLIP visual similarity, -1 to 1. Null when CLIP isn't available")
+    ranking_score: float
+
+
+class AlternativesResponse(BaseModel):
+    item_id: str
+    item_total: int = Field(description="The cart item's own score, for comparison")
+    garment_type: str | None
+    status: str = Field(description="ok | no_catalog | unknown_type | no_match")
+    message: str = Field(description="Text the panel can show when there are no alternatives")
+    alternatives: list[Alternative]
