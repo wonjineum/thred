@@ -113,3 +113,10 @@ def image_similarity(image_a, image_b) -> float:
     # (1 x N) @ (N x 1) = a single 1x1 value; .item() pulls out the plain number; float() makes
     # it a normal Python float so FastAPI/JSON can return it.
     return float((_embed_image(image_a) @ _embed_image(image_b).T).item())
+
+
+
+def get_image_embedding(image) -> list[float]:
+    """Generate a CLIP embedding as a JSON-serializable list."""
+    embedding = _embed_image(image)
+    return embedding.squeeze(0).tolist()
