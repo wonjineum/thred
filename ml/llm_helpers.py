@@ -6,10 +6,10 @@ import math
 VALID_RATINGS = {"Good", "Average", "Bad", "Unknown"}
 
 
-def classify_unknown_brand(domain: str) -> str:
-    """Classify a clothing brand's sustainability using its domain."""
+def classify_unknown_brand(brand_name: str) -> str:
+    """Classify a clothing brand's sustainability using its brand name."""
 
-    if not domain or not domain.strip():
+    if not brand_name or not brand_name.strip():
         return "Unknown"
 
     try:
@@ -32,7 +32,10 @@ def classify_unknown_brand(domain: str) -> str:
                 },
                 {
                     "role": "user",
-                    "content": f"Classify the clothing brand associated with domain: {domain.strip()}",
+                    "content": (
+                        f"Classify the sustainability of the clothing brand: "
+                        f"{brand_name.strip()}"
+                    ),
                 },
             ],
             temperature=0,
@@ -52,8 +55,6 @@ def classify_unknown_brand(domain: str) -> str:
         return "Unknown"
 
 
-
-
 def extract_material_composition(
     material_text: str | None,
     product_title: str | None = None,
@@ -68,7 +69,7 @@ def extract_material_composition(
         product_description: Product description (optional).
 
     Returns:
-        {"cotton": 60, "polyester": 40}
+        {"organic cotton": 60, "recycled polyester": 40}
         None if exact percentages cannot be determined.
 
     Only call when the existing material parser returns None.
@@ -93,7 +94,18 @@ def extract_material_composition(
                         "to identify the garment's MAIN fabric composition. "
                         "Return ONLY a JSON object mapping lowercase material "
                         "names to numeric percentages. "
-                        'Example: {"cotton": 60, "polyester": 40}. '
+                        'Example: {"organic cotton": 60, '
+                        '"recycled polyester": 40}. '
+                        "IMPORTANT: Preserve material qualifiers that affect "
+                        "sustainability scoring, such as organic, recycled, "
+                        "regenerated, and conventional. "
+                        "For example, 'organic cotton' must remain "
+                        "'organic cotton', NOT 'cotton'. "
+                        "Similarly, 'recycled polyester' must remain "
+                        "'recycled polyester', NOT 'polyester'. "
+                        "Only include these qualifiers when explicitly "
+                        "supported by the provided information. "
+                        "Never assume a material is organic or recycled. "
                         "Only use percentages explicitly supported by the "
                         "provided information. Never guess percentages. "
                         "Do not confuse lining, trim, or filling with the "
