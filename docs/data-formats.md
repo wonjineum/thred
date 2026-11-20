@@ -204,7 +204,7 @@ Used by `POST /alternatives`. Both files go in `backend/data/`. If they don't ex
 | `secondhand` | no | Defaults to `true`. Secondhand listings get a bonus (`SECONDHAND_BONUS` in `backend/app/rubric.py`) |
 | `currency`, `condition`, `size`, `last_checked` | no | Shown or used for upkeep |
 
-The backend refuses to start if a listing is missing a required field, has a `garment_type` outside the list, or repeats an `alt_id`, so mistakes show up right away.
+The backend also accepts the Vinted scraper's names: `item_id` for `alt_id` and `product_url` for `listing_url`; `source` is taken from the id prefix (`vinted_123` → `"Vinted"`). A listing that's missing a required field, has a `garment_type` outside the list, or repeats an `alt_id` is skipped with a warning in the server log, and the rest still load.
 
 **Cover the garment types Amazon shoppers buy most:** t-shirts, hoodies, jeans, pants, jackets. A few listings per type is enough for the demo. Use only listings the site's terms allow you to collect, and check that each `image_url` and `listing_url` still opens.
 
@@ -223,5 +223,6 @@ CLIP image embeddings for each listing, computed ahead of time so `/alternatives
 
 - One entry per `alt_id` in `alternatives.json`, using the same model as `ml/clip_model.py`.
 - Unit-length vectors (what `clip_helpers._embed_image` already returns): `.reshape(-1).tolist()`.
+- A flat `{alt_id: [...]}` object, or `{}` before anything is computed, also works.
 - Optional. Listings without an embedding get embedded on the fly when CLIP is installed, or ranked without visual similarity when it isn't.
 - Re-run whenever `alternatives.json` changes.

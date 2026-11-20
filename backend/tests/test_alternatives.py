@@ -162,18 +162,64 @@ def test_no_match(tmp_path):
     [
         listing("x", garment_type="trousers"),
         listing("x", price="40"),
+        listing("x", price=None),
         listing("x", listing_url=""),
         {"alt_id": "x"},
+        "not an object",
     ],
 )
-def test_bad_listing_is_rejected(tmp_path, bad):
-    with pytest.raises(AlternativesError):
-        write(tmp_path, [bad])
+def test_bad_listing_is_skipped_and_the_rest_still_load(tmp_path, bad):
+    index = write(tmp_path, [bad, listing("good")])
+    assert [l.data["alt_id"] for l in index.listings] == ["good"]
 
 
-def test_duplicate_ids_are_rejected(tmp_path):
+def test_duplicate_ids_keep_the_first(tmp_path):
+    index = write(tmp_path, [listing("same", title="First Pants"), listing("same", title="Second Pants")])
+    assert [l.data["title"] for l in index.listings] == ["First Pants"]
+
+
+def test_broken_json_file_raises(tmp_path):
+    (tmp_path / "alternatives.json").write_text("{not json")
     with pytest.raises(AlternativesError):
-        write(tmp_path, [listing("same"), listing("same")])
+        load_index(CATALOG, tmp_path)
+
+
+def test_accepts_the_vinted_scraper_format(tmp_path):
+    # scripts/vinted_altneratives.py writes item_id / product_url and no source.
+    scraped = {
+        "item_id": "vinted_123",
+        "title": "Organic Cotton Wide Leg Pants",
+        "brand": None,
+        "price": 30.0,
+        "image_url": "https://example.com/v.jpg",
+        "product_url": "https://example.com/items/123",
+        "material_text": "100% Organic Cotton",
+        "category": None,
+        "certifications": None,
+        "garment_type": "pants",
+    }
+    index = write(tmp_path, [scraped])
+    result = find_alternatives(PANTS, CATALOG, index)
+    alt = result.alternatives[0]
+    assert (alt.alt_id, alt.source, alt.listing_url, alt.product_url, alt.secondhand) == (
+        "vinted_123", "Vinted", "https://example.com/items/123", "https://example.com/items/123", True,
+    )
+
+
+@pytest.mark.parametrize(
+    "embeddings_file, expected",
+    [
+        ({}, {}),
+        ({"model": "clip", "embeddings": {"good": [1, 0]}}, {"good": (1.0, 0.0)}),
+        ({"good": [1, 0]}, {"good": (1.0, 0.0)}),
+        ({"good": "oops", "fine": [0, 1]}, {"fine": (0.0, 1.0)}),
+    ],
+)
+def test_embedding_file_shapes(tmp_path, embeddings_file, expected):
+    (tmp_path / "alternatives.json").write_text(json.dumps([listing("good"), listing("fine")]))
+    (tmp_path / "alternative_embeddings.json").write_text(json.dumps(embeddings_file))
+    index = load_index(CATALOG, tmp_path)
+    assert {l.data["alt_id"]: l.embedding for l in index.listings if l.embedding} == expected
 
 
 # ---------- Endpoint ----------
@@ -188,3 +234,28 @@ def test_alternatives_endpoint_with_real_amazon_sample():
 def test_alternatives_endpoint_validates_limit():
     res = TestClient(app).post("/alternatives", json={"item": PANTS.model_dump(), "limit": 0})
     assert res.status_code == 422
+
+
+# ---------- Alternatives inside /score (what the extension popup reads) ----------
+
+def test_score_includes_alternatives_per_item(tmp_path, monkeypatch):
+    import app.main as main_module
+
+    index = write(tmp_path, [listing("good")])
+    monkeypatch.setattr(main_module, "load_index", lambda catalog: index)
+    body = TestClient(app).post("/score", json={"items": [PANTS.model_dump()]}).json()
+    alts = body["items"][0]["alternatives"]
+    assert [a["alt_id"] for a in alts] == ["good"]
+    assert alts[0]["product_url"] == alts[0]["listing_url"]
+
+
+def test_score_still_works_when_alternatives_break(monkeypatch):
+    import app.main as main_module
+
+    def broken(catalog):
+        raise AlternativesError("bad file")
+
+    monkeypatch.setattr(main_module, "load_index", broken)
+    res = TestClient(app).post("/score", json={"items": [PANTS.model_dump()]})
+    assert res.status_code == 200
+    assert res.json()["items"][0]["alternatives"] == []

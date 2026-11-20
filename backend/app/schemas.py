@@ -63,6 +63,10 @@ class ItemScore(BaseModel):
     impact: str = Field(description="One plain-language impact line for the badge")
     brand: Component
     material: Component
+    alternatives: list["Alternative"] = Field(
+        default_factory=list,
+        description="Up to 3 better-scoring secondhand alternatives. Empty when there are none",
+    )
     # Purchase/wardrobe history is stored locally in the extension, so the
     # extension computes that part itself. It is not part of this response.
 
@@ -96,6 +100,7 @@ class Alternative(BaseModel):
     currency: str
     image_url: str
     listing_url: str
+    product_url: str = Field(description="Same as listing_url (the extension reads this name)")
     source: str = Field(description="Where the listing is, e.g. 'Vinted'")
     condition: str | None
     secondhand: bool
@@ -114,3 +119,6 @@ class AlternativesResponse(BaseModel):
     status: str = Field(description="ok | no_catalog | unknown_type | no_match")
     message: str = Field(description="Text the panel can show when there are no alternatives")
     alternatives: list[Alternative]
+
+
+ItemScore.model_rebuild()
