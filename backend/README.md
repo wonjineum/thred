@@ -100,6 +100,7 @@ Limit: 1–50 items per request. Where to find each field on Amazon: see [`docs/
 ```
 
 - `items` come back in the same order they were sent.
+- Each item also has `alternatives`: up to 3 better-scoring secondhand listings, same fields as in `/alternatives` below. It's `[]` when there are none or no listings are loaded. If anything goes wrong finding alternatives, `/score` still returns the scores.
 - `verdict` is one of `good_choice`, `okay`, `consider_alternatives`. Use it for colors; show `verdict_label` as text.
 - `impact` and each `summary` are the plain-language phrases for the panel. The `points` are for the expanded view.
 - **History is not included.** The wardrobe lives in the extension's local storage, so the extension scores that part itself. `total` covers brand + material only.

@@ -60,15 +60,22 @@ if (isAmazonCartPage()) {
 
 
 
-/* querySelectorAll('[data-asin]') finds elements containing Amazon product IDs.
+/* Finds the Amazon product IDs (ASINs) of the items in the cart.
+
+The cart page also has [data-asin] elements outside the cart ("Saved for later",
+recommendation carousels), so look inside the active cart first. If Amazon's
+layout doesn't have that section, fall back to every [data-asin] on the page.
 
 .map() extracts each ASIN.
 
 .filter() removes empty values.
 
 new Set() removes duplicates.*/
+const ACTIVE_CART_ITEMS = '#sc-active-cart [data-asin], [data-name="Active Items"] [data-asin]';
+
 function getCartASINs(): string[] {
-  const items = document.querySelectorAll('[data-asin]');
+  const inCart = document.querySelectorAll(ACTIVE_CART_ITEMS);
+  const items = inCart.length > 0 ? inCart : document.querySelectorAll('[data-asin]');
 
   const asins = [...items]
     .map(item => item.getAttribute('data-asin'))

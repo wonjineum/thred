@@ -11,6 +11,7 @@ type, higher sustainability score, at most 1.5x the price, then ranked by
 
 from dataclasses import dataclass
 import json
+import logging
 from pathlib import Path
 import sys
 from typing import Any
@@ -23,7 +24,10 @@ from .scoring import score_item, verdict_for
 
 DEFAULT_DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 _REPO_ROOT = Path(__file__).resolve().parents[2]
-REQUIRED_FIELDS = ("alt_id", "title", "price", "image_url", "listing_url", "source", "garment_type")
+REQUIRED_FIELDS = ("alt_id", "title", "price", "image_url", "listing_url", "garment_type")
+
+
+log = logging.getLogger("thred.alternatives")
 
 
 class AlternativesError(ValueError):
@@ -66,6 +70,7 @@ def clear_cache() -> None:
 
 
 def _read_listings(path: Path) -> list[dict[str, Any]]:
+    """Valid listings from alternatives.json. Bad listings are skipped with a warning."""
     if not path.exists():
         return []
     try:
@@ -74,31 +79,72 @@ def _read_listings(path: Path) -> list[dict[str, Any]]:
         raise AlternativesError(f"Unable to read valid JSON from {path}") from exc
     if not isinstance(records, list):
         raise AlternativesError(f"{path} must contain a JSON array")
+
+    listings: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for i, r in enumerate(records):
-        if not isinstance(r, dict):
-            raise AlternativesError(f"Listing {i} must be an object")
-        missing = [f for f in REQUIRED_FIELDS if r.get(f) in (None, "")]
-        if missing:
-            raise AlternativesError(f"Listing {i} is missing {', '.join(missing)}")
-        if r["garment_type"] not in GARMENT_TYPES:
-            raise AlternativesError(f"Listing {i} garment_type must be one of {GARMENT_TYPES}")
-        if isinstance(r["price"], bool) or not isinstance(r["price"], (int, float)) or r["price"] < 0:
-            raise AlternativesError(f"Listing {i} price must be a non-negative number")
-        if r["alt_id"] in seen:
-            raise AlternativesError(f"Duplicate alt_id: {r['alt_id']}")
-        seen.add(r["alt_id"])
-    return records
+    for i, raw in enumerate(records):
+        record = _normalize(raw) if isinstance(raw, dict) else None
+        problem = _problem(record, seen)
+        if problem:
+            log.warning("Skipping listing %s in %s: %s", i, path.name, problem)
+            continue
+        seen.add(record["alt_id"])
+        listings.append(record)
+    return listings
+
+
+def _normalize(raw: dict[str, Any]) -> dict[str, Any]:
+    """Accept the spec's field names and the scraper's (item_id, product_url)."""
+    record = dict(raw)
+    record["alt_id"] = raw.get("alt_id") or raw.get("item_id")
+    record["listing_url"] = raw.get("listing_url") or raw.get("product_url")
+    if not record.get("source"):
+        prefix = str(record["alt_id"] or "").split("_")[0].split("-")[0]
+        record["source"] = prefix.capitalize() if prefix else "Secondhand"
+    if record.get("secondhand") is None:
+        record["secondhand"] = True
+    record.setdefault("currency", "USD")
+    return record
+
+
+def _problem(record: dict[str, Any] | None, seen: set[str]) -> str | None:
+    if record is None:
+        return "not an object"
+    missing = [f for f in REQUIRED_FIELDS if record.get(f) in (None, "")]
+    if missing:
+        return f"missing {', '.join(missing)}"
+    if record["garment_type"] not in GARMENT_TYPES:
+        return f"garment_type must be one of {GARMENT_TYPES}"
+    price = record["price"]
+    if isinstance(price, bool) or not isinstance(price, (int, float)) or price < 0:
+        return "price must be a non-negative number"
+    if record["alt_id"] in seen:
+        return f"duplicate alt_id {record['alt_id']}"
+    return None
 
 
 def _read_embeddings(path: Path) -> dict[str, tuple[float, ...]]:
+    """Accepts {"model": ..., "embeddings": {alt_id: [...]}}, a flat {alt_id: [...]}, or {}."""
     if not path.exists():
         return {}
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
-        return {k: tuple(float(x) for x in v) for k, v in data["embeddings"].items()}
-    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError, AttributeError) as exc:
-        raise AlternativesError(f"{path} must look like {{\"model\": ..., \"embeddings\": {{alt_id: [numbers]}}}}") from exc
+    except (OSError, json.JSONDecodeError) as exc:
+        raise AlternativesError(f"Unable to read valid JSON from {path}") from exc
+    if not isinstance(data, dict):
+        raise AlternativesError(f"{path} must contain a JSON object")
+    vectors = data.get("embeddings", data)
+    if not isinstance(vectors, dict):
+        raise AlternativesError(f"{path}: 'embeddings' must map alt_id to a list of numbers")
+    result: dict[str, tuple[float, ...]] = {}
+    for alt_id, vector in vectors.items():
+        if alt_id == "model":
+            continue
+        try:
+            result[alt_id] = tuple(float(x) for x in vector)
+        except (TypeError, ValueError):
+            log.warning("Skipping embedding for %s: not a list of numbers", alt_id)
+    return result
 
 
 def _score_listing(record: dict[str, Any], catalog: Catalog) -> int:
@@ -186,6 +232,7 @@ def _to_alternative(record: dict[str, Any], used_similarity: bool) -> Alternativ
         currency=record.get("currency", "USD"),
         image_url=record["image_url"],
         listing_url=record["listing_url"],
+        product_url=record["listing_url"],
         source=record["source"],
         condition=record.get("condition"),
         secondhand=record.get("secondhand", True),

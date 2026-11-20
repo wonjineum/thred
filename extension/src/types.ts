@@ -31,8 +31,9 @@ export interface ScoreComponent {
   summary: string;
 }
 
-// The backend doesn't return alternatives yet. When it does, it should send
-// a list like this on each item, and the popup will show them automatically.
+// /score returns up to 3 of these on each item (empty until
+// backend/data/alternatives.json has listings). The backend sends more fields
+// (source, condition, verdict...); see backend/README.md.
 export interface Alternative {
   title: string;
   product_url: string;
