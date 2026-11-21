@@ -71,10 +71,11 @@ layout doesn't have that section, fall back to every [data-asin] on the page.
 .filter() removes empty values.
 
 new Set() removes duplicates.*/
-const ACTIVE_CART_ITEMS = '#sc-active-cart [data-asin], [data-name="Active Items"] [data-asin]';
-
 function getCartASINs(): string[] {
-  const inCart = document.querySelectorAll(ACTIVE_CART_ITEMS);
+  // Declared inside the function: this file runs top to bottom on page load, and
+  // a top-level const below the call site isn't initialized yet when it runs.
+  const activeCartItems = '#sc-active-cart [data-asin], [data-name="Active Items"] [data-asin]';
+  const inCart = document.querySelectorAll(activeCartItems);
   const items = inCart.length > 0 ? inCart : document.querySelectorAll('[data-asin]');
 
   const asins = [...items]
